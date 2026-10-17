@@ -25,7 +25,7 @@ Window mainWindow;
 std::vector<Mesh *> meshList;
 std::vector<Shader *> shaderList;
 
-float yaw = -90.0f, pitch = -10.0f;
+float yaw = -118.7f, pitch = -3.8f;
 
 std::vector<unsigned int> texList;
 
@@ -170,42 +170,36 @@ std::vector<glm::vec3> meshPositions;
 void CreateOBJ()
 {
     Mesh *building = new Mesh();
-    Mesh *character = new Mesh();
-    Mesh *laptop = new Mesh();
-    Mesh *smallStool = new Mesh();
+    Mesh *personLaptop = new Mesh();
     Mesh *donationCup = new Mesh();
     Mesh *pizzaBox = new Mesh();
     Mesh *trashCan = new Mesh();
-    Mesh *garbageBag1 = new Mesh();
-    Mesh *garbageBag2 = new Mesh();
+    Mesh *trashBag = new Mesh();
     Mesh *streetlight = new Mesh();
     Mesh *sidewalk = new Mesh();
     Mesh *roadGround = new Mesh();
     Mesh *pebbles = new Mesh();
-    Mesh *mouse = new Mesh();
+    Mesh *rat = new Mesh();
     Mesh *cockroach1 = new Mesh();
     Mesh *cockroach2 = new Mesh();
     Mesh *cockroach3 = new Mesh();
-    Mesh *streetDog = new Mesh();
+    Mesh *dogColored = new Mesh();
 
     bool loadedBuilding = building->CreateMeshFromOBJ("Objects/building.obj");
-    bool loadedCharacter = character->CreateMeshFromOBJ("Objects/character.obj");
-    bool loadedLaptop = laptop->CreateMeshFromOBJ("Objects/laptop.obj");
-    bool loadedSmallStool = smallStool->CreateMeshFromOBJ("Objects/small_stool.obj");
+    bool loadedPersonLaptop = personLaptop->CreateMeshFromOBJ("Objects/person_laptop_fixed.obj");
     bool loadedDonationCup = donationCup->CreateMeshFromOBJ("Objects/donation_cup_and_coins.obj");
     bool loadedPizzaBox = pizzaBox->CreateMeshFromOBJ("Objects/leftover_pizza_and_box.obj");
     bool loadedTrashCan = trashCan->CreateMeshFromOBJ("Objects/trash_can.obj");
-    bool loadedGarbageBag1 = garbageBag1->CreateMeshFromOBJ("Objects/garbage_bag_01.obj");
-    bool loadedGarbageBag2 = garbageBag2->CreateMeshFromOBJ("Objects/garbage_bag_02.obj");
+    bool loadedTrashBag = trashBag->CreateMeshFromOBJ("Objects/trash_bag.obj");
     bool loadedStreetlight = streetlight->CreateMeshFromOBJ("Objects/streetlight.obj");
     bool loadedSidewalk = sidewalk->CreateMeshFromOBJ("Objects/sidewalk_and_kerb.obj");
     bool loadedRoadGround = roadGround->CreateMeshFromOBJ("Objects/road_ground.obj");
     bool loadedPebbles = pebbles->CreateMeshFromOBJ("Objects/ground_pebbles.obj");
-    bool loadedMouse = mouse->CreateMeshFromOBJ("Objects/mouse.obj");
+    bool loadedRat = rat->CreateMeshFromOBJ("Objects/rat.obj");
     bool loadedCockroach1 = cockroach1->CreateMeshFromOBJ("Objects/cockroach_01.obj");
     bool loadedCockroach2 = cockroach2->CreateMeshFromOBJ("Objects/cockroach_02.obj");
     bool loadedCockroach3 = cockroach3->CreateMeshFromOBJ("Objects/cockroach_03.obj");
-    bool loadedStreetDog = streetDog->CreateMeshFromOBJ("Objects/street_dog.obj");
+    bool loadedDogColored = dogColored->CreateMeshFromOBJ("Objects/dog_colored.obj");
 
     if (loadedBuilding)
     {
@@ -219,40 +213,16 @@ void CreateOBJ()
         delete(building);
     }
 
-    if (loadedCharacter)
+    if (loadedPersonLaptop)
     {
-        texList.push_back(loadTexture2D("Textures/character_baseColor.png"));
-        meshList.push_back(character);
+        texList.push_back(loadTexture2D("Textures/person_base_color.png"));
+        meshList.push_back(personLaptop);
         meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
     }
     else
     {
         std::cout << "Failed to load model" << std::endl;
-        delete(character);
-    }
-
-    if (loadedLaptop)
-    {
-        texList.push_back(loadTexture2D("Textures/laptop_baseColor.png"));
-        meshList.push_back(laptop);
-        meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
-    }
-    else
-    {
-        std::cout << "Failed to load model" << std::endl;
-        delete(laptop);
-    }
-
-    if (loadedSmallStool)
-    {
-        texList.push_back(loadTexture2D("Textures/small_stool_baseColor.png"));
-        meshList.push_back(smallStool);
-        meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
-    }
-    else
-    {
-        std::cout << "Failed to load model" << std::endl;
-        delete(smallStool);
+        delete(personLaptop);
     }
 
     if (loadedDonationCup)
@@ -291,28 +261,16 @@ void CreateOBJ()
         delete(trashCan);
     }
 
-    if (loadedGarbageBag1)
+    if (loadedTrashBag)
     {
-        texList.push_back(loadTexture2D("Textures/garbage_bag_01_baseColor.png"));
-        meshList.push_back(garbageBag1);
+        texList.push_back(loadTexture2D("Textures/trash_bag_base_color.png"));
+        meshList.push_back(trashBag);
         meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
     }
     else
     {
         std::cout << "Failed to load model" << std::endl;
-        delete(garbageBag1);
-    }
-
-    if (loadedGarbageBag2)
-    {
-        texList.push_back(loadTexture2D("Textures/garbage_bag_02_baseColor.png"));
-        meshList.push_back(garbageBag2);
-        meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
-    }
-    else
-    {
-        std::cout << "Failed to load model" << std::endl;
-        delete(garbageBag2);
+        delete(trashBag);
     }
 
     if (loadedStreetlight)
@@ -363,16 +321,16 @@ void CreateOBJ()
         delete(pebbles);
     }
 
-    if (loadedMouse)
+    if (loadedRat)
     {
-        texList.push_back(loadTexture2D("Textures/mouse_baseColor.png"));
-        meshList.push_back(mouse);
+        texList.push_back(loadTexture2D("Textures/rat_base_color.png"));
+        meshList.push_back(rat);
         meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
     }
     else
     {
         std::cout << "Failed to load model" << std::endl;
-        delete(mouse);
+        delete(rat);
     }
 
     if (loadedCockroach1)
@@ -411,16 +369,16 @@ void CreateOBJ()
         delete(cockroach3);
     }
 
-    if (loadedStreetDog)
+    if (loadedDogColored)
     {
-        texList.push_back(loadTexture2D("Textures/street_dog_baseColor.png"));
-        meshList.push_back(streetDog);
+        texList.push_back(loadTexture2D("Textures/dog_base_color.png"));
+        meshList.push_back(dogColored);
         meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
     }
     else
     {
         std::cout << "Failed to load model" << std::endl;
-        delete(streetDog);
+        delete(dogColored);
     }
 
     sun = new Mesh();
@@ -464,8 +422,8 @@ int main()
     float deltaTime = 0.0f;
     float lastTime = 0.0f;
 
-    glm::vec3 cameraPos = glm::vec3(0.0f, 1.2f, 2.2f);
-    glm::vec3 cameraTarget = glm::vec3(0.0f, 0.5f, -1.3f);
+    glm::vec3 cameraPos = glm::vec3(0.92f, 1.01f, 0.68f);
+    glm::vec3 cameraTarget = glm::vec3(-0.35f, 0.82f, -1.65f);
     glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
 
     glm::vec3 cameraDirection = glm::normalize(cameraTarget - cameraPos);
