@@ -186,6 +186,7 @@ void CreateOBJ()
     Mesh *cockroach1 = new Mesh();
     Mesh *cockroach2 = new Mesh();
     Mesh *cockroach3 = new Mesh();
+    Mesh *streetDog = new Mesh();
 
     bool loadedBuilding = building->CreateMeshFromOBJ("Objects/building.obj");
     bool loadedCharacter = character->CreateMeshFromOBJ("Objects/character.obj");
@@ -204,6 +205,7 @@ void CreateOBJ()
     bool loadedCockroach1 = cockroach1->CreateMeshFromOBJ("Objects/cockroach_01.obj");
     bool loadedCockroach2 = cockroach2->CreateMeshFromOBJ("Objects/cockroach_02.obj");
     bool loadedCockroach3 = cockroach3->CreateMeshFromOBJ("Objects/cockroach_03.obj");
+    bool loadedStreetDog = streetDog->CreateMeshFromOBJ("Objects/street_dog.obj");
 
     if (loadedBuilding)
     {
@@ -407,6 +409,18 @@ void CreateOBJ()
     {
         std::cout << "Failed to load model" << std::endl;
         delete(cockroach3);
+    }
+
+    if (loadedStreetDog)
+    {
+        texList.push_back(loadTexture2D("Textures/street_dog_baseColor.png"));
+        meshList.push_back(streetDog);
+        meshPositions.push_back(glm::vec3(0.0f, 0.0f, 0.0f));
+    }
+    else
+    {
+        std::cout << "Failed to load model" << std::endl;
+        delete(streetDog);
     }
 
     sun = new Mesh();
